@@ -4,29 +4,31 @@ __license__ = "GPL"
 
 # m + n using Turing Automata
 
-# rules
-# 5 status    : s1, s2, s3, s4, s5 => s = {1,2,3,4,0}, where 0 = H (halt)
-# 2 values    : 1, b => 1, 0
-# 3 directions: stop, l, r => 0, 1, 2
-# we convert decimal to unary and use unary system to work with Turing Automata
-#
-# -----------------------------------
-#  s   a | s_new   a_new   direction
-# -----------------------------------
-# s1   b | s2      b       l
-# s2   b | s3      b       l
-# s2   1 | s2      1       l
-# s3   b | H       b       0
-# s3   1 | s4      b       r
-# s4   b | s2      1       l
-# -----------------------------------
-#
-# Initial state:
-#
-# bb11...1b11...1bb
-# ---------------^-
-#                s1
+'''
+ rules
+ 5 status    : s1, s2, s3, s4, s5 => s = {1,2,3,4,0}, where 0 = H (halt)
+ 2 values    : 1, b => 1, 0
+ 3 directions: stop, l, r => 0, 1, 2
 
+ convert decimal to unary and use unary system to work with Turing Automata
+
+ +-----------------------------------+
+ | s    a | s_new   a_new   direction|
+ +-----------------------------------+
+ | s1   b | s2      b       l        |
+ | s2   b | s3      b       l        |
+ | s2   1 | s2      1       l        |
+ | s3   b | H       b       0        |
+ | s3   1 | s4      b       r        |
+ | s4   b | s2      1       l        |
+ +-----------------------------------+
+
+ Initial state:
+
+ bb11...1b11...1bb
+ ---------------^-
+                s1
+'''
 def f(s, a):
     if (s == 1 and a == 0):
         return (2, 0, 1)
