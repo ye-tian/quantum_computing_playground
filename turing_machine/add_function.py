@@ -82,6 +82,9 @@ def add(a, b):
         s = s_new
         tap[p] = a_new
 
+        # print out how it works
+        print (tap)
+
         # move
         if d == 1: # to left
             p -= 1
@@ -93,8 +96,36 @@ def add(a, b):
         # read new value from the tap
         a = tap[p]
 
-    # count 1s
-    return tap.count(1)
+    # generate result | verify the result
+    # verify by calculating 1 from the first 1 and stopping when meets a 0
+    # if Automata goes wrong, the sum will be wrong of the script will get an error
+    # use the "Dumm" way of doing counting
+
+    # get position of the left boundary
+    left_boundary = -1
+    for i in range(0, len(tap)):
+        v = tap[i]
+        if v == 1:
+            left_boundary = i
+            break
+
+    # get position of the right boundary
+    right_boundary = - 1
+    for i in range(left_boundary, len(tap)):
+        v = tap[i]
+        if v == 0:
+            right_boundary = i
+            break
+
+    # generate the result
+    final_result = 0
+    sub_tap = tap[left_boundary:right_boundary]
+
+    for i in sub_tap:
+        final_result += i
+
+    return final_result
+
 
 if __name__ == "__main__":
-    print (add(7, 8))
+    print (add(47, 8))
