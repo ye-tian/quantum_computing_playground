@@ -1,6 +1,6 @@
 __author__ = "Ye Tian"
 __email__ = "ye.tian@avira.com"
-__license__ = "GPL"
+__license__ = "GPLv3"
 
 # m + n using Turing Automata
 
